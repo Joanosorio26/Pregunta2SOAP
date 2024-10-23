@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.0 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2024.10.23 a las 03:34:28 AM PET 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://www.cibertec.edu.pe/ws/objects">
+    <schemaBindings map="false">
+      <package name="pe.edu.cibertec.ws.objects"/>
+    </schemaBindings>
+    <bindings scd="tns:getAnimalesRequest">
+      <class ref="pe.edu.cibertec.ws.objects.GetAnimalesRequest"/>
+    </bindings>
+    <bindings scd="tns:getAnimalesResponse">
+      <class ref="pe.edu.cibertec.ws.objects.GetAnimalesResponse"/>
+    </bindings>
+    <bindings scd="~tns:animalws">
+      <class ref="pe.edu.cibertec.ws.objects.Animalws"/>
+    </bindings>
+    <bindings scd="tns:getAnimalRequest">
+      <class ref="pe.edu.cibertec.ws.objects.GetAnimalRequest"/>
+    </bindings>
+    <bindings scd="tns:getAnimalResponse">
+      <class ref="pe.edu.cibertec.ws.objects.GetAnimalResponse"/>
+    </bindings>
+    <bindings scd="tns:postAnimalRequest">
+      <class ref="pe.edu.cibertec.ws.objects.PostAnimalRequest"/>
+    </bindings>
+    <bindings scd="tns:postAnimalResponse">
+      <class ref="pe.edu.cibertec.ws.objects.PostAnimalResponse"/>
+    </bindings>
+    <bindings scd="~tns:alimentacionws">
+      <class ref="pe.edu.cibertec.ws.objects.Alimentacionws"/>
+    </bindings>
+    <bindings scd="~tns:visitasws">
+      <class ref="pe.edu.cibertec.ws.objects.Visitasws"/>
+    </bindings>
+  </bindings>
+</bindings>
+

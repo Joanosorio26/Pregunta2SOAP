@@ -1,0 +1,68 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.cibertec.edu.pe/ws/objects"
+           targetNamespace="http://www.cibertec.edu.pe/ws/objects"
+           elementFormDefault="qualified">
+    <!-- Definición del tipo complejo para una visita -->
+    <xs:complexType name="visitaws">
+        <xs:sequence>
+            <xs:element name="ticket" type="xs:int" />
+            <xs:element name="nombre_visitante" type="xs:string" />
+            <xs:element name="fecha_visita" type="xs:date" />
+            <xs:element name="recorrido" type="xs:string" />
+            <xs:element name="numero_personas" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Solicitud para obtener todas las visitas -->
+    <xs:element name="getVisitasRequest">
+        <xs:complexType>
+            <xs:sequence />
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Respuesta para obtener todas las visitas -->
+    <xs:element name="getVisitasResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="visitas"
+                            type="tns:visitaws" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Solicitud para obtener una visita por ticket -->
+    <xs:element name="getVisitaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ticket" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Respuesta para obtener una visita por ticket -->
+    <xs:element name="getVisitaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="visita" type="tns:visitaws" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Solicitud para agregar una nueva visita -->
+    <xs:element name="postVisitaRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="visita" type="tns:visitaws" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Respuesta para agregar una nueva visita -->
+    <xs:element name="postVisitaResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="visita" type="tns:visitaws" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

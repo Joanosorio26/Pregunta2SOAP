@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ee3beafb-eb33-4fd0-a096-df15035e4355" activeEnvironment="Default" name="Pruebas Soap Cibertec" resourceRoot="" soapui-version="5.7.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="9cb6fa42-fd79-40ef-8865-52b99dac4de5" wsaVersion="NONE" name="AnimalesPortSoap11" type="wsdl" bindingName="{http://www.cibertec.edu.pe/ws/objects}AnimalesPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8060/ws/animales.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8060/ws/animales.wsdl"><con:part><con:url>http://localhost:8060/ws/animales.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.cibertec.edu.pe/ws/objects" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.cibertec.edu.pe/ws/objects" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.cibertec.edu.pe/ws/objects">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.cibertec.edu.pe/ws/objects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <!--Definición del tipo complejo para un animal-->
+      <xs:complexType name="animalws">
+        <xs:sequence>
+          <xs:element name="idanimal" type="xs:int"/>
+          <xs:element name="nombre" type="xs:string"/>
+          <xs:element name="especie" type="xs:string"/>
+          <xs:element name="edad" type="xs:int"/>
+          <xs:element name="habitat" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--Definición del tipo complejo para alimentación-->
+      <xs:complexType name="alimentacionws">
+        <xs:sequence>
+          <xs:element name="animal_id" type="xs:int"/>
+          <xs:element name="tipo_comida" type="xs:string"/>
+          <xs:element name="cantidad" type="xs:decimal"/>
+          <xs:element name="frecuencia" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--Definición del tipo complejo para visitas-->
+      <xs:complexType name="visitasws">
+        <xs:sequence>
+          <xs:element name="ticket" type="xs:int"/>
+          <xs:element name="nombre_visitante" type="xs:string"/>
+          <xs:element name="fecha_visita" type="xs:date"/>
+          <xs:element name="numero_personas" type="xs:int"/>
+          <xs:element name="recorrido" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--Solicitud para obtener todos los animales-->
+      <xs:element name="getAnimalesRequest">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <!--Respuesta para obtener todos los animales-->
+      <xs:element name="getAnimalesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="animales" type="tns:animalws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Solicitud para obtener un animal por ID-->
+      <xs:element name="getAnimalRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="idanimal" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Respuesta para obtener un animal por ID-->
+      <xs:element name="getAnimalResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="animal" type="tns:animalws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Solicitud para agregar un nuevo animal-->
+      <xs:element name="postAnimalRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="animal" type="tns:animalws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Respuesta para agregar un nuevo animal-->
+      <xs:element name="postAnimalResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="animal" type="tns:animalws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Solicitud para agregar un nuevo alimento-->
+      <xs:element name="postAlimentacionRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="alimentacion" type="tns:alimentacionws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Respuesta para agregar un nuevo alimento-->
+      <xs:element name="postAlimentacionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="alimentacion" type="tns:alimentacionws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Solicitud para agregar una nueva visita-->
+      <xs:element name="postVisitaRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="visita" type="tns:visitasws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Respuesta para agregar una nueva visita-->
+      <xs:element name="postVisitaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="visita" type="tns:visitasws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="postAnimalRequest">
+    <wsdl:part element="tns:postAnimalRequest" name="postAnimalRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postVisitaRequest">
+    <wsdl:part element="tns:postVisitaRequest" name="postVisitaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postAnimalResponse">
+    <wsdl:part element="tns:postAnimalResponse" name="postAnimalResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postAlimentacionResponse">
+    <wsdl:part element="tns:postAlimentacionResponse" name="postAlimentacionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postAlimentacionRequest">
+    <wsdl:part element="tns:postAlimentacionRequest" name="postAlimentacionRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAnimalesRequest">
+    <wsdl:part element="tns:getAnimalesRequest" name="getAnimalesRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAnimalesResponse">
+    <wsdl:part element="tns:getAnimalesResponse" name="getAnimalesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postVisitaResponse">
+    <wsdl:part element="tns:postVisitaResponse" name="postVisitaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAnimalRequest">
+    <wsdl:part element="tns:getAnimalRequest" name="getAnimalRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAnimalResponse">
+    <wsdl:part element="tns:getAnimalResponse" name="getAnimalResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AnimalesPort">
+    <wsdl:operation name="postAnimal">
+      <wsdl:input message="tns:postAnimalRequest" name="postAnimalRequest"></wsdl:input>
+      <wsdl:output message="tns:postAnimalResponse" name="postAnimalResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postVisita">
+      <wsdl:input message="tns:postVisitaRequest" name="postVisitaRequest"></wsdl:input>
+      <wsdl:output message="tns:postVisitaResponse" name="postVisitaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postAlimentacion">
+      <wsdl:input message="tns:postAlimentacionRequest" name="postAlimentacionRequest"></wsdl:input>
+      <wsdl:output message="tns:postAlimentacionResponse" name="postAlimentacionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnimales">
+      <wsdl:input message="tns:getAnimalesRequest" name="getAnimalesRequest"></wsdl:input>
+      <wsdl:output message="tns:getAnimalesResponse" name="getAnimalesResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnimal">
+      <wsdl:input message="tns:getAnimalRequest" name="getAnimalRequest"></wsdl:input>
+      <wsdl:output message="tns:getAnimalResponse" name="getAnimalResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AnimalesPortSoap11" type="tns:AnimalesPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="postAnimal">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postAnimalRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postAnimalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postVisita">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postVisitaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postVisitaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postAlimentacion">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postAlimentacionRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postAlimentacionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnimales">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAnimalesRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAnimalesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnimal">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAnimalRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAnimalResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AnimalesPortService">
+    <wsdl:port binding="tns:AnimalesPortSoap11" name="AnimalesPortSoap11">
+      <soap:address location="http://localhost:8060/ws/animales"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8060/ws/animales</con:endpoint></con:endpoints><con:operation id="ec2abb45-6322-40c8-b46c-a56cffc1637c" isOneWay="false" action="" name="getAnimal" bindingOperationName="getAnimal" type="Request-Response" outputName="getAnimalResponse" inputName="getAnimalRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ed6e716b-865a-400b-987d-0d20d1fa07e9" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8060/ws/animales</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getAnimalRequest>\r
+         <obj:idanimal>10</obj:idanimal>\r
+      </obj:getAnimalRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/objects/AnimalesPort/getAnimalRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="75282f5e-19a8-4d76-a593-317ef2cfa4b2" isOneWay="false" action="" name="getAnimales" bindingOperationName="getAnimales" type="Request-Response" outputName="getAnimalesResponse" inputName="getAnimalesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="49a5dc12-4b71-4b26-850a-d21ae373e52d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8060/ws/animales</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getAnimalesRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/objects/AnimalesPort/getAnimalesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="488f3639-ecc8-4c5e-8c38-be4398d2aecd" isOneWay="false" action="" name="postAlimentacion" bindingOperationName="postAlimentacion" type="Request-Response" outputName="postAlimentacionResponse" inputName="postAlimentacionRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7b1d1a2b-9e76-436e-a944-8e41764f603b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8060/ws/animales</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postAlimentacionRequest>\r
+         <obj:alimentacion>\r
+            <obj:animal_id>?</obj:animal_id>\r
+            <obj:tipo_comida>?</obj:tipo_comida>\r
+            <obj:cantidad>?</obj:cantidad>\r
+            <obj:frecuencia>?</obj:frecuencia>\r
+         </obj:alimentacion>\r
+      </obj:postAlimentacionRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/objects/AnimalesPort/postAlimentacionRequest"/></con:call></con:operation><con:operation id="2370d2ba-0d37-44d4-9abd-c63f5b66b73a" isOneWay="false" action="" name="postAnimal" bindingOperationName="postAnimal" type="Request-Response" outputName="postAnimalResponse" inputName="postAnimalRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2dcf8466-5662-4cb9-9591-78631137f4cd" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8060/ws/animales</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postAnimalRequest>\r
+         <obj:animal>\r
+            <obj:idanimal>12</obj:idanimal>\r
+            <obj:nombre>ronron</obj:nombre>\r
+            <obj:especie>gato</obj:especie>\r
+            <obj:edad>12</obj:edad>\r
+            <obj:habitat>suelo</obj:habitat>\r
+         </obj:animal>\r
+      </obj:postAnimalRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/objects/AnimalesPort/postAnimalRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3e870879-14b1-49bb-bfa6-c37a08fdebab" isOneWay="false" action="" name="postVisita" bindingOperationName="postVisita" type="Request-Response" outputName="postVisitaResponse" inputName="postVisitaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0e08db52-462a-4b17-a17b-249756ba4abf" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8060/ws/animales</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postVisitaRequest>\r
+         <obj:visita>\r
+            <obj:ticket>?</obj:ticket>\r
+            <obj:nombre_visitante>?</obj:nombre_visitante>\r
+            <obj:fecha_visita>?</obj:fecha_visita>\r
+            <obj:numero_personas>?</obj:numero_personas>\r
+            <obj:recorrido>?</obj:recorrido>\r
+         </obj:visita>\r
+      </obj:postVisitaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/objects/AnimalesPort/postVisitaRequest"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="416a3a74-4293-4344-848d-4dce919f0f78" wsaVersion="NONE" name="VisitasPortSoap11" type="wsdl" bindingName="{http://www.cibertec.edu.pe/ws/objects}VisitasPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8060/ws/visitas.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8060/ws/visitas.wsdl"><con:part><con:url>http://localhost:8060/ws/visitas.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.cibertec.edu.pe/ws/objects" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.cibertec.edu.pe/ws/objects" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.cibertec.edu.pe/ws/objects">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.cibertec.edu.pe/ws/objects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <!--Definición del tipo complejo para una visita-->
+      <xs:complexType name="visitaws">
+        <xs:sequence>
+          <xs:element name="ticket" type="xs:int"/>
+          <xs:element name="nombre_visitante" type="xs:string"/>
+          <xs:element name="fecha_visita" type="xs:date"/>
+          <xs:element name="recorrido" type="xs:string"/>
+          <xs:element name="numero_personas" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <!--Solicitud para obtener todas las visitas-->
+      <xs:element name="getVisitasRequest">
+        <xs:complexType>
+          <xs:sequence/>
+        </xs:complexType>
+      </xs:element>
+      <!--Respuesta para obtener todas las visitas-->
+      <xs:element name="getVisitasResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="visitas" type="tns:visitaws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Solicitud para obtener una visita por ticket-->
+      <xs:element name="getVisitaRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="ticket" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Respuesta para obtener una visita por ticket-->
+      <xs:element name="getVisitaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="visita" type="tns:visitaws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Solicitud para agregar una nueva visita-->
+      <xs:element name="postVisitaRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="visita" type="tns:visitaws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!--Respuesta para agregar una nueva visita-->
+      <xs:element name="postVisitaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="visita" type="tns:visitaws"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getVisitasResponse">
+    <wsdl:part element="tns:getVisitasResponse" name="getVisitasResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postVisitaRequest">
+    <wsdl:part element="tns:postVisitaRequest" name="postVisitaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVisitasRequest">
+    <wsdl:part element="tns:getVisitasRequest" name="getVisitasRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVisitaRequest">
+    <wsdl:part element="tns:getVisitaRequest" name="getVisitaRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postVisitaResponse">
+    <wsdl:part element="tns:postVisitaResponse" name="postVisitaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVisitaResponse">
+    <wsdl:part element="tns:getVisitaResponse" name="getVisitaResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="VisitasPort">
+    <wsdl:operation name="getVisitas">
+      <wsdl:input message="tns:getVisitasRequest" name="getVisitasRequest"></wsdl:input>
+      <wsdl:output message="tns:getVisitasResponse" name="getVisitasResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postVisita">
+      <wsdl:input message="tns:postVisitaRequest" name="postVisitaRequest"></wsdl:input>
+      <wsdl:output message="tns:postVisitaResponse" name="postVisitaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVisita">
+      <wsdl:input message="tns:getVisitaRequest" name="getVisitaRequest"></wsdl:input>
+      <wsdl:output message="tns:getVisitaResponse" name="getVisitaResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VisitasPortSoap11" type="tns:VisitasPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getVisitas">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getVisitasRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVisitasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postVisita">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postVisitaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="postVisitaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVisita">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getVisitaRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVisitaResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VisitasPortService">
+    <wsdl:port binding="tns:VisitasPortSoap11" name="VisitasPortSoap11">
+      <soap:address location="http://localhost:8060/ws/visitas"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8060/ws/visitas</con:endpoint></con:endpoints><con:operation id="1891de21-0660-4f3d-bba2-cc89f64ffba1" isOneWay="false" action="" name="getVisita" bindingOperationName="getVisita" type="Request-Response" outputName="getVisitaResponse" inputName="getVisitaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="20572140-35bf-4d35-af85-6fc1b650cebc" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8060/ws/visitas</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getVisitaRequest>\r
+         <obj:ticket>2</obj:ticket>\r
+      </obj:getVisitaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/objects/VisitasPort/getVisitaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d00d2cac-93e7-4d88-beaf-cc54a8dc57ba" isOneWay="false" action="" name="getVisitas" bindingOperationName="getVisitas" type="Request-Response" outputName="getVisitasResponse" inputName="getVisitasRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d596f550-fb6b-4c96-91f5-41623ce4abf4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8060/ws/visitas</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:getVisitasRequest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/objects/VisitasPort/getVisitasRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8f2c7808-8729-4bc9-9b0c-4583d9303583" isOneWay="false" action="" name="postVisita" bindingOperationName="postVisita" type="Request-Response" outputName="postVisitaResponse" inputName="postVisitaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="aeee27a8-d408-4725-b392-acbde321435e" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8060/ws/visitas</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:obj="http://www.cibertec.edu.pe/ws/objects">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <obj:postVisitaRequest>\r
+         <obj:visita>\r
+            <obj:ticket>6</obj:ticket>\r
+            <obj:nombre_visitante>joan</obj:nombre_visitante>\r
+            <obj:fecha_visita>2024-10-23</obj:fecha_visita>\r
+            <obj:recorrido>Recorrido 3</obj:recorrido>\r
+            <obj:numero_personas>1</obj:numero_personas>\r
+         </obj:visita>\r
+      </obj:postVisitaRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cibertec.edu.pe/ws/objects/VisitasPort/postVisitaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

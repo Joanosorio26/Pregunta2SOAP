@@ -1,0 +1,69 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.cibertec.edu.pe/ws/objects"
+           targetNamespace="http://www.cibertec.edu.pe/ws/objects"
+           elementFormDefault="qualified">
+    <!-- Definición del tipo complejo para un animal -->
+    <xs:complexType name="animalws">
+        <xs:sequence>
+            <xs:element name="idanimal" type="xs:int" />
+            <xs:element name="nombre" type="xs:string" />
+            <xs:element name="especie" type="xs:string" />
+            <xs:element name="edad" type="xs:int" />
+            <xs:element name="habitat" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Solicitud para obtener todos los animales -->
+    <xs:element name="getAnimalesRequest">
+        <xs:complexType>
+            <xs:sequence />
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Respuesta para obtener todos los animales -->
+    <xs:element name="getAnimalesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="animales"
+                            type="tns:animalws" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Solicitud para obtener un animal por ID -->
+    <xs:element name="getAnimalRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idanimal" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Respuesta para obtener un animal por ID -->
+    <xs:element name="getAnimalResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="animal" type="tns:animalws" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Solicitud para agregar un nuevo animal -->
+    <xs:element name="postAnimalRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="animal" type="tns:animalws" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Respuesta para agregar un nuevo animal -->
+    <xs:element name="postAnimalResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="animal" type="tns:animalws" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
