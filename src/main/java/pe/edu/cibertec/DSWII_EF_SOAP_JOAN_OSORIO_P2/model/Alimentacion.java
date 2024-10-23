@@ -18,7 +18,7 @@ public class Alimentacion {
     private Double cantidad;
     private String frecuencia;
 
-    @ManyToOne  // Cambiamos a ManyToOne para reflejar correctamente la relación
-    @JoinColumn(name = "animal_id")  // La clave foránea en la tabla alimentacion
+    @ManyToOne  
+    @JoinColumn(name = "idanimal")  
     private Animal animal;
 }
